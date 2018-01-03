@@ -6,14 +6,15 @@ class bd
 	private $servername = "localhost";
 	private $username = "root";
 	private $password = "";
+	private $dbName = "alumnoscompu";
 	private $conn;
 	
 	function __construct()
 	{
 		try {
-    $conn = new PDO("mysql:host=$servername;dbname=alumnoscompu", $username, $password);
+    $this->conn = new PDO("mysql:host=".$this->servername.";dbname=".$this->dbName, $this->username, $this->password);
     // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Connected successfully"; 
 
    
@@ -26,9 +27,9 @@ catch(PDOException $e)
 	}
 
 	function cons($str){
-		$stmt = $conn->prepare($str); 
+		$stmt = $this->conn->prepare($str); 
 		$stmt->execute(); 
-		$rows = $stmt->fetchAll();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		return $rows;
 	}
