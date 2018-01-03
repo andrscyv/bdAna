@@ -7,7 +7,7 @@ class bd
 	private $username = "root";
 	private $password = "";
 	private $dbName = "alumnoscompu";
-	private $conn;
+	public $conn;
 	
 	function __construct()
 	{

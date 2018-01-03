@@ -14,7 +14,14 @@ function limpia($data){
 }
 
 function limpiaParams(){
-	echo $_SERVER['REQUEST_METHOD'];
+	$arr = '_'.$_SERVER['REQUEST_METHOD'];
+	global $$arr;
+	//echo $$arr['msg'];
+
+	foreach($$arr as $nom => $param) {
+	    $$arr[$nom] = limpia($param);
+	    //echo $$arr[$nom];
+	}
 }
 
  ?>
