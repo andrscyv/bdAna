@@ -6,7 +6,7 @@
 function alumnos(){
 	global $msql;
 	$res = $msql->cons('select * from alumnos');
-	return json($res);
+	echo json($res);
 }
 
 function alumno_id($id){

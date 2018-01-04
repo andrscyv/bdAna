@@ -24,7 +24,7 @@ if(isset($_POST['func'])){
 		}
 	}
 	else
-		echo 'error';
+		echo 'Acceso denegado';
 }
 
 //echo 'hola fin';
@@ -33,3 +33,4 @@ if(isset($_POST['func'])){
 
 
  ?>
+ 
