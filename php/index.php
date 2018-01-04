@@ -6,16 +6,21 @@ require 'auth.php';
 $msql = new bd;
 
 limpiaParams(); // Sólo limpia $_GET y $_POST
+session_start();
 
 if(isset($_POST['func'])){
 
 	if($_POST['func'] == 'auth')
 		auth();
-	elseif(isset($_SESSION)){
+	elseif(isset($_SESSION['login'])){
 
 		switch ($_POST['func']) {
 			case 'alumnos':
 				alumnos();
+				break;
+
+			case 'logout':
+				logout();
 				break;
 			
 			default:
@@ -25,6 +30,7 @@ if(isset($_POST['func'])){
 	}
 	else
 		echo 'Acceso denegado';
+	//echo '\n session : '.session_id();
 }
 
 //echo 'hola fin';
@@ -33,4 +39,3 @@ if(isset($_POST['func'])){
 
 
  ?>
- 

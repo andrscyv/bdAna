@@ -14,8 +14,7 @@ function auth(){
 	    $stmt->bindParam(':psw', $psw);
 	    $stmt->execute();
 	    if($stmt->rowCount() > 0){
-	    	session_start();
-	    	$res = session_id();
+	    	$_SESSION['login'] = 'true';
 	    }
 	    else
 	    	$res = 'error';
@@ -23,6 +22,11 @@ function auth(){
 
 	//echo isset($_SESSION);
 	echo $res;
+}
+
+function logout(){
+	session_destroy();
+	echo 'logout';
 }
 
 
