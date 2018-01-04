@@ -5,7 +5,7 @@ require 'controladores/util.php';
 require 'auth.php';
 $msql = new bd;
 
-limpiaParams(); // Sólo limpia $_GET y $_POST
+limpiaParams(); // Sólo limpia $_GET o $_POST
 session_start();
 
 if(isset($_POST['func'])){
@@ -21,6 +21,10 @@ if(isset($_POST['func'])){
 
 			case 'logout':
 				logout();
+				break;
+
+			case 'alumno_id':
+				alumno_id();
 				break;
 			
 			default:

@@ -9,10 +9,21 @@ function alumnos(){
 	echo json($res);
 }
 
-function alumno_id($id){
+function alumno_id(){
 	global $msql;
 	$conn = $msql->conn;
-	$id = limpia($id);
+	if( isset( $_POST['id'] ) ){
+
+		$id = $_POST['id'];
+		$stmt = $conn->prepare("select * from alumnos where idAlum = :id");
+		$stmt->bindParam(':id',$id);
+		$stmt->execute();
+		$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+	echo json($res);
+
 }
 
 
