@@ -1,7 +1,7 @@
 <?php 
 //require 'bd.php';
 //require 'util.php';
-$msql = new bd;
+//$msql = new bd;
 
 function alumnos(){
 	global $msql;
