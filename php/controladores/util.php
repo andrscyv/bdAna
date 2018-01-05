@@ -24,4 +24,26 @@ function limpiaParams(){
 	}
 }
 
+function jsonErr($msg){
+	header('Content-Type: application/json');
+	return json_encode(array('error' => $msg));
+}
+
+function jsonOk(){
+	return json(array("ok"));
+}
+
+function issetArrPost($arr){
+	$res = true;
+	$i = 0;
+
+	while( $i < count($arr) ){
+		$res = ( $res and isset($_POST[$arr[$i]]) );
+		$i++;
+	}
+
+	return $res;
+	//return 'hola isset ';
+}
+
  ?>

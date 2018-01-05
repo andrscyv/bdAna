@@ -26,14 +26,22 @@ if(isset($_POST['func'])){
 			case 'alumno_id':
 				alumno_id();
 				break;
+
+			case 'alumno_cu':
+				alumno_cu();
+				break;
+
+			case 'insertaAlumno':
+				insertaAlumno();
+				break;
 			
 			default:
-				# code...
+				echo jsonErr('funcion no existente');
 				break;
 		}
 	}
 	else
-		echo 'Acceso denegado';
+		echo jsonErr('Acceso denegado');
 	//echo '\n session : '.session_id();
 }
 

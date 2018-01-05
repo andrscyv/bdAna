@@ -26,6 +26,57 @@ function alumno_id(){
 
 }
 
+function alumno_cu(){
+	global $msql;
+	$conn = $msql->conn;
+	if( isset( $_POST['cu'] ) ){
+
+		$cu = $_POST['cu'];
+		$stmt = $conn->prepare("select * from alumnos where cu = :cu");
+		$stmt->bindParam(':cu',$cu);
+		$stmt->execute();
+		$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+	echo json($res);
+	//echo 'hola cu';
+
+}
+
+function insertaAlumno(){
+	global $msql;
+	$conn = $msql->conn;
+	$params = array("cu", "beca", "nombre", "apellidoP", "apellidoM", "programa",
+				"email", "telefono", "estado", "calle", "colonia", "delegacion", 
+				"cp", "numExt", "numInt", "comentarios");
+	
+	try{
+		if( issetArrPost( $params ) ){
+
+			$stmt = $conn->prepare("INSERT INTO alumnos (cu, beca, nombre, apellidoP, apellidoM, programa,
+							email, telefono, estado, calle, colonia, delegacion, cp, numExt, numInt, comentarios)
+							VALUES (:cu, :beca, :nombre, :apellidoP, :apellidoM, :programa,
+							:email, :telefono, :estado, :calle, :colonia, :delegacion, :cp,
+							:numExt, :numInt, :comentarios)");
+
+			foreach ($params as $param )
+				$stmt->bindParam(":".$param, $_POST[$param]);
+
+			$stmt->execute();
+			$res = jsonOk();
+
+		}
+	}
+	catch(PDOException $e){
+		//$res = jsonErr($e->getMessage());
+		$res = $e;
+	}
+
+	echo $res;
+	//echo var_dump(issetArrPost($params));
+}
+
 
 
  ?>
