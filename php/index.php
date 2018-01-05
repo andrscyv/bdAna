@@ -1,13 +1,13 @@
 <?php 
+require 'config.php';
 require 'bd.php';
-require 'controladores/ctrl_alumnos.php';
-require 'controladores/util.php';
+require 'util.php';
 require 'auth.php';
-$msql = new bd;
+require 'controladores/ctrl_alumnos.php';
+$msql = new bd($bdConfig);
 
 limpiaParams(); // Sólo limpia $_GET o $_POST
 session_start();
-$funcionesRegistradas = array("alumnos", "logout", "alumno_id", "alumno_cu", "insertaAlumno");
 
 if(isset($_POST['func'])){
 
