@@ -7,6 +7,7 @@ $msql = new bd;
 
 limpiaParams(); // Sólo limpia $_GET o $_POST
 session_start();
+$funcionesRegistradas = array("alumnos", "logout", "alumno_id", "alumno_cu", "insertaAlumno");
 
 if(isset($_POST['func'])){
 
@@ -14,31 +15,11 @@ if(isset($_POST['func'])){
 		auth();
 	elseif(isset($_SESSION['login'])){
 
-		switch ($_POST['func']) {
-			case 'alumnos':
-				alumnos();
-				break;
+		if( in_array($_POST["func"], $funcionesRegistradas) )
+			$_POST["func"]();
+		else
+			echo jsonErr("funcion no existente");
 
-			case 'logout':
-				logout();
-				break;
-
-			case 'alumno_id':
-				alumno_id();
-				break;
-
-			case 'alumno_cu':
-				alumno_cu();
-				break;
-
-			case 'insertaAlumno':
-				insertaAlumno();
-				break;
-			
-			default:
-				echo jsonErr('funcion no existente');
-				break;
-		}
 	}
 	else
 		echo jsonErr('Acceso denegado');
