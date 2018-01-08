@@ -29,9 +29,7 @@ function logout(){
 	echo 'logout';
 }
 
-function hashP(){
-	echo password_hash('pswd',PASSWORD_DEFAULT);
-}
+
 
 
  ?>
