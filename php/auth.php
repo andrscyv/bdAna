@@ -7,12 +7,14 @@ function auth(){
 
 	if(isset($_POST['usuario']) and isset($_POST['password'])){
 		$usu = $_POST['usuario'];
-		$psw = $_POST['password'];
-		$stmt = $conn->prepare("SELECT * from usuarios where usuario =:usu");
+		//$psw = $_POST['password'];
+		$psw = hash('sha256', $_POST['password']);
+		$stmt = $conn->prepare("SELECT * from usuarios where usuario =:usu and password =:psw");
 	    $stmt->bindParam(':usu', $usu);
+	    $stmt->bindParam(':psw', $psw);
 	    $stmt->execute();
 	    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-	    if( ($stmt->rowCount() > 0) and password_verify($psw, $row["password"]) ){
+	    if( $stmt->rowCount() > 0){
 
 	    	$_SESSION['login'] = 'true';
 	    	$_SESSION["rol"] = $row["rol"];
@@ -43,7 +45,7 @@ function nuevoUsuario(){
 			$stmt->execute();
 
 			if($stmt->rowCount() == 0){
-				$_POST["pswd"] = password_hash($_POST["pswd"], PASSWORD_DEFAULT);
+				$_POST["pswd"] = hash('sha256', $_POST["pswd"]);
 				$stmt = $msql->sqlPrepPost("INSERT INTO usuarios(usuario, password, rol)
 						VALUES (:nomUsu, :pswd, :rol)", $params);
 
