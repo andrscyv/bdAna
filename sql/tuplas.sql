@@ -17,5 +17,5 @@ VALUES (155899,30,"Usu2", "apeP", "apeM", "Ing. compu y mat", "mail@gmail","1313
 		"Colonia", "delegacion", 54050);
 
 
-INSERT INTO usuarios(usuario, password)
-VALUES ('usu','psw');
+INSERT INTO usuarios(usuario, password, rol)
+VALUES ('usu','psw','admin');
