@@ -64,7 +64,7 @@ function insertaAlumno(){
 				$stmt->bindParam(":".$param, $_POST[$param]);
 
 			$stmt->execute();
-			$res = jsonOk();
+			$res = jsonOk("exito");
 
 		}
 	}
