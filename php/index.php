@@ -2,8 +2,8 @@
 require 'config.php';
 require 'bd.php';
 require 'util.php';
-require 'auth.php';
-require 'controladores/ctrl_alumnos.php';
+//equire 'auth.php';
+//require 'controladores/ctrl_alumnos.php';
 $msql = new bd($bdConfig);
 
 limpiaParams(); // Sólo limpia $_GET o $_POST
@@ -11,14 +11,19 @@ session_start();
 
 if(isset($_POST['func'])){
 
-	if($_POST['func'] == 'auth')
+	if($_POST['func'] == 'auth'){
+		require_once("auth.php");
 		auth();
+	}
 	elseif(isset($_SESSION['login'])){
 
-		if( in_array($_POST["func"], $funcionesRegistradas) )
+		if( array_key_exists($_POST["dominio"], $funcionesRegistradas) and 
+			in_array( $_POST["func"], $funcionesRegistradas[$_POST["dominio"]] ) ){
+			require_once($rutasRegistradas[$_POST["dominio"]]);
 			$_POST["func"]();
+		}
 		else
-			echo jsonErr("funcion no existente");
+			echo jsonErr("funcion o dominio no existente");
 
 	}
 	else

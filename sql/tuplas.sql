@@ -19,3 +19,6 @@ VALUES (155899,30,"Usu2", "apeP", "apeM", "Ing. compu y mat", "mail@gmail","1313
 
 INSERT INTO usuarios(usuario, password, rol)
 VALUES ('usu','psw','admin');
+
+INSERT INTO usuarios(usuario, password, rol)
+VALUES ('admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','admin');
