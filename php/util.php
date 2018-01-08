@@ -29,8 +29,8 @@ function jsonErr($msg){
 	return json_encode(array('error' => $msg));
 }
 
-function jsonOk($msg){
-	return json(array("ok" => $msg));
+function jsonOk(){
+	return json(array("ok"));
 }
 
 function issetArrPost($arr){

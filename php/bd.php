@@ -31,26 +31,6 @@ catch(PDOException $e)
 		return $rows;
 	}
 
-	function bindParamArrPost($stmt, $params){
-		foreach ($params as $param )
-					$stmt->bindParam(":".$param, $_POST[$param]);
-	}
-
-	//Prepara una instruccion sql con placeholder de la forma
-	// :nomVar , donde nomVar es el nombre del parametro POST
-	function sqlPrepPost($sql, $params){
-		$connec = $this->conn;
-
-		$stmt = $connec->prepare($sql);
-
-		$this->bindParamArrPost($stmt, $params);
-		
-
-		return $stmt;
-		}
-
-
-
 
 }
 ?>
