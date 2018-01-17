@@ -1,0 +1,30 @@
+A continuacion se da un listado de las rutas disponibles
+en el servidor, así como los nombres de parámetros que utiliza.
+
+===============================================================
+Auth
+===============================================================
+
+dominio = auth
+
+func = auth
+func = logout
+func = nuevoUsuario
+
+
+
+
+===============================================================
+Alumnos
+===============================================================
+
+dominio = alumnos
+
+func = alumnos
+func = alumno_id
+func = alumno_cu
+func = insertaAlumno
+
+
+
+

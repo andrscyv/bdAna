@@ -54,19 +54,28 @@ function insertaAlumno(){
 	try{
 		if( issetArrPost( $params ) ){
 
-			$stmt = $conn->prepare("INSERT INTO alumnos (cu, beca, nombre, apellidoP, apellidoM, programa,
-							email, telefono, estado, calle, colonia, delegacion, cp, numExt, numInt, comentarios)
-							VALUES (:cu, :beca, :nombre, :apellidoP, :apellidoM, :programa,
-							:email, :telefono, :estado, :calle, :colonia, :delegacion, :cp,
-							:numExt, :numInt, :comentarios)");
-
-			foreach ($params as $param )
-				$stmt->bindParam(":".$param, $_POST[$param]);
-
+			$stmt = $msql->sqlPrepPost("SELECT * from alumnos where cu = :cu", 
+									array("cu"));
 			$stmt->execute();
-			$res = jsonOk("exito");
 
+			if($stmt->rowCount() == 0){
+				$stmt = $conn->prepare("INSERT INTO alumnos (cu, beca, nombre, apellidoP, apellidoM, programa,
+								email, telefono, estado, calle, colonia, delegacion, cp, numExt, numInt, comentarios)
+								VALUES (:cu, :beca, :nombre, :apellidoP, :apellidoM, :programa,
+								:email, :telefono, :estado, :calle, :colonia, :delegacion, :cp,
+								:numExt, :numInt, :comentarios)");
+
+				foreach ($params as $param )
+					$stmt->bindParam(":".$param, $_POST[$param]);
+
+				$stmt->execute();
+				$res = jsonOk("exito");
+			}
+			else
+				$res = jsonErr("alumno ya existente");
 		}
+		else
+			$res = jsonErr("parametros insuficientes");
 	}
 	catch(PDOException $e){
 		//$res = jsonErr($e->getMessage());

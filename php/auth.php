@@ -3,7 +3,6 @@
 function auth(){
 	global $msql;
 	$conn = $msql->conn;
-	$res='ok';
 
 	if(isset($_POST['usuario']) and isset($_POST['password'])){
 		$usu = $_POST['usuario'];
@@ -17,11 +16,15 @@ function auth(){
 	    if( $stmt->rowCount() > 0){
 
 	    	$_SESSION['login'] = 'true';
-	    	$_SESSION["rol"] = $row["rol"];
+				$_SESSION["rol"] = $row["rol"];
+				
+				$res = jsonOk("Acceso Exitoso");
 	    }
 	    else
 	    	$res = jsonErr("Credenciales incorrectas");
 	}
+	else
+		$res = jsonErr("Credenciales incompletas");
 
 	//echo isset($_SESSION);
 	echo $res;
