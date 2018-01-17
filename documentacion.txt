@@ -10,6 +10,7 @@ dominio = auth
 func = auth
 func = logout
 func = nuevoUsuario
+func = tengoSesion
 
 
 
@@ -25,6 +26,11 @@ func = alumno_id
 func = alumno_cu
 func = insertaAlumno
 
+===============================================================
+Actividades extra
+===============================================================
 
+dominio = actExtra
 
+func = insertaActividad
 
