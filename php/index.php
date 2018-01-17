@@ -11,9 +11,9 @@ session_start();
 $json = file_get_contents('php://input'); 
 $_POST = json_decode($json, true);
 if(isset($_POST['func'])){
-	if($_POST['func'] == 'auth'){
+	if(in_array( $_POST['func'] , $funcionesRegistradas["authPublico"])){
 		require_once("auth.php");
-		auth();
+		$_POST['func']();
 	}
 	elseif(isset($_SESSION['login'])){
 		//echo "prueba8";

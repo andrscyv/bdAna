@@ -75,5 +75,13 @@ function nuevoUsuario(){
 	echo $res;
 }
 
+function tengoSesion(){
+	$res = "false";
+	if(isset($_SESSION['login']))
+		$res = "true";
+
+	echo json(array("sesion" => $res));
+}
+
 
  ?>
