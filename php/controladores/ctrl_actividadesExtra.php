@@ -40,6 +40,12 @@ function insertaActividad(){
 	echo $res;
 }
 
+function actividadesExtra(){
+	global $msql;
+	$res = $msql->cons("select * from actividadesExtra");
+	echo json($res);
+}
+
 
 
 
