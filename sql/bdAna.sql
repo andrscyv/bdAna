@@ -124,4 +124,15 @@ usuario VARCHAR(30) NOT NULL,
 password VARCHAR(255) NOT NULL,
 rol VARCHAR(20) NOT NULL,
 PRIMARY KEY(idUsu)
-)
+);
+
+ALTER TABLE alumnos DROP COLUMN comentarios;
+
+CREATE TABLE comentarios(
+	idComentario INT NOT NULL AUTO_INCREMENT,
+	comentario TEXT NOT NULL,
+	idAlum INT NOT NULL,
+	PRIMARY KEY(idComentario),
+	FOREIGN KEY(idAlum) REFERENCES alumnos(idAlum) ON DELETE CASCADE
+
+);
