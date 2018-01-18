@@ -16,7 +16,7 @@ if(isset($_POST['func'])){
 		$_POST['func']();
 	}
 	elseif(isset($_SESSION['login'])){
-		//echo "prueba8";
+		
 		if( array_key_exists($_POST["dominio"], $funcionesRegistradas) and 
 			in_array( $_POST["func"], $funcionesRegistradas[$_POST["dominio"]] ) ){
 			require_once($rutasRegistradas[$_POST["dominio"]]);

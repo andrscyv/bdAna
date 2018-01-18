@@ -1,11 +1,11 @@
 <?php 
 
+function insertaSancion(){
 
 
-function insertaActividad(){
 	global $msql;
 	$conn = $msql->conn;
-	$params = array("cuAlum","nombre", "tipo");
+	$params = array("cuAlum","descripcion", "area", "problemasReglamento");
 	try{
 		if( issetArrPost( $params ) ){
 
@@ -16,13 +16,14 @@ function insertaActividad(){
 			if($stmt->rowCount() > 0){
 				$alum = $stmt->fetch(PDO::FETCH_ASSOC);
 				$_POST["idAlum"] = $alum["idAlum"];
-				$params = array("nombre", "tipo", "idAlum");
-				$stmt = $msql->sqlPrepPost("INSERT INTO actividadesExtra(idAlum, nombre, tipo)
-						VALUES (:idAlum, :nombre, :tipo)", $params);
+				$params = array("descripcion", "area", "problemasReglamento", "idAlum");
+				$stmt = $msql->sqlPrepPost("INSERT INTO sanciones(idAlum, descripcion,
+						area, problemasReglamento)
+						VALUES (:idAlum, :descripcion, :area, :problemasReglamento)", $params);
 
 				$stmt->execute();
-				$idAct = $conn->lastInsertId();
-				$res = json(array("idActividad" => $idAct));
+				$idSancion = $conn->lastInsertId();
+				$res = json(array("idSancion" => $idSancion));
 
 			}
 			else
@@ -38,14 +39,15 @@ function insertaActividad(){
 	}
 
 	echo $res;
+
+
 }
 
-function actividadesExtra(){
+function sanciones(){
 	global $msql;
-	$res = $msql->cons("select * from actividadesExtra");
+	$res = $msql->cons("select * from sanciones");
 	echo json($res);
 }
-
 
 
 
