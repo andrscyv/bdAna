@@ -8,9 +8,12 @@ Auth
 dominio = auth
 
 func = auth; param = usuario, password
+
 func = logout; 
+
 func = nuevoUsuario; param = nomUsu, pswd,rol
-func = tengoSesion;
+
+func = tengoSesion; // booleano que dice si se esta loggeado
 
 
 
@@ -21,12 +24,15 @@ Alumnos
 
 dominio = alumnos
 
-func = alumnos
-func = alumno_id; params = id
-func = alumno_cu; params = cu
-func = insertaAlumno; params = "cu", "beca", "nombre", "apellidoP", "apellidoM", "programa",
-				"email", "telefono", "estado", "calle", "colonia", "delegacion", 
-				"cp", "numExt", "numInt";
+func = alumnos //regresa todos los alumnos
+
+func = alumno_id; params = id // busqueda alumno por id
+
+func = alumno_cu; params = cu // busqueda alumno por cu
+
+func = insertaAlumno; params = "cu", "beca", "nombre", "apellidoP",
+ 			"apellidoM", "programa","email", "telefono", "estado",
+  			"calle", "colonia", "delegacion","cp", "numExt", "numInt";
 
 ===============================================================
 Actividades extra
@@ -35,17 +41,19 @@ Actividades extra
 dominio = actExtra
 
 func = insertaActividad; params = "cuAlum","nombre", "tipo";
-func = actividadesExtra;
+
+func = actividadesExtra; // regresa todas las actividades
 
 
 ===============================================================
 Sanciones
 ===============================================================
 
-dominio = sanciones
+dominio = sanciones 
 
-func = insertaSancion; params = "cuAlum","descripcion", "area", "problemasReglamento"
-func = sanciones
+func = insertaSancion; params = "cuAlum","descripcion",
+								 "area", "problemasReglamento";
+func = sanciones // regresa todas las sanciones
 
 ===============================================================
 Estancias
@@ -54,3 +62,18 @@ Estancias
 dominio = estancias
 
 func  = insertaUniversidad ; params = nomUni, nomPais;
+func = universidades; // regresa todas las universidades
+
+===============================================================
+Comentarios
+===============================================================
+
+dominio = comentarios
+
+func = insertaComentCu; params = cuAlum, comentario // inserta comentario
+al alumno especificado;
+
+func = comentarios; // todas las tuplas
+
+func = comentarios_cu ; params = cuAlum // regresa los comentarios asociados
+al alum con la cu = cuAlum;
