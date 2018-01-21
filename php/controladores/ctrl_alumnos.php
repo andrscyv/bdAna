@@ -19,10 +19,13 @@ function alumno_id(){
 		$stmt->bindParam(':id',$id);
 		$stmt->execute();
 		$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$res = json($res);
 
 	}
+	else
+		$res = jsonErr("Error en parametros");
 
-	echo json($res);
+	echo $res;
 
 }
 
@@ -36,10 +39,13 @@ function alumno_cu(){
 		$stmt->bindParam(':cu',$cu);
 		$stmt->execute();
 		$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$res = json($res);
 
 	}
+	else
+		$res = jsonErr("Error en parametros");
 
-	echo json($res);
+	echo $res;
 	//echo 'hola cu';
 
 }

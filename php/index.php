@@ -16,14 +16,19 @@ if(isset($_POST['func'])){
 		$_POST['func']();
 	}
 	elseif(isset($_SESSION['login'])){
+
+		if( isset($_POST["dominio"]) ){
 		
-		if( array_key_exists($_POST["dominio"], $funcionesRegistradas) and 
-			in_array( $_POST["func"], $funcionesRegistradas[$_POST["dominio"]] ) ){
-			require_once($rutasRegistradas[$_POST["dominio"]]);
-			$_POST["func"]();
+			if( array_key_exists($_POST["dominio"], $funcionesRegistradas) and 
+				in_array( $_POST["func"], $funcionesRegistradas[$_POST["dominio"]] ) ){
+				require_once($rutasRegistradas[$_POST["dominio"]]);
+				$_POST["func"]();
+			}
+			else
+				echo jsonErr("funcion o dominio no existente");
 		}
 		else
-			echo jsonErr("funcion o dominio no existente");
+			echo jsonErr("Sin dominio especificado");
 
 	}
 	else{
@@ -32,6 +37,8 @@ if(isset($_POST['func'])){
 	}
 	//echo '\n session : '.session_id();
 }
+else
+	echo jsonErr("Sin funcion especificada");
 //echo jsonErr('Acceso denegado');
 //echo 'hola fin';
 //print_r( $_POST);

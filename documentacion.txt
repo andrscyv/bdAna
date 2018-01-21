@@ -77,3 +77,13 @@ func = comentarios; // todas las tuplas
 
 func = comentarios_cu ; params = cuAlum // regresa los comentarios asociados
 al alum con la cu = cuAlum;
+
+===============================================================
+Materias
+===============================================================
+
+dominio = materias;
+
+func = insertaMateria; params = cMateria, folio, numCreditos, nombre, semestre (int)
+
+func = materias; //regresa todas las materias;

@@ -1,6 +1,6 @@
 <?php 
 
-///////////FALTA POBRAR ESTE METODO
+
 //func  = insertaUniversidad ; params = nomUni, nomPais;
 function insertaUniversidad(){
 	global $msql;

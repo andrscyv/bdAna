@@ -8,7 +8,8 @@ $funcionesRegistradas = array(
 					"actExtra" => array("insertaActividad", "actividadesExtra"),
 					"sanciones" => array("insertaSancion", "sanciones"),
 					"estancias" => array("insertaUniversidad", "universidades"),
-					"comentarios" => array("insertaComentCu","comentarios", "comentarios_cu")
+					"comentarios" => array("insertaComentCu","comentarios", "comentarios_cu"),
+					"materias" => array("insertaMateria", "materias")
 				);
 
 $rutasRegistradas = array("alumnos" => "controladores/ctrl_alumnos.php",
@@ -17,7 +18,8 @@ $rutasRegistradas = array("alumnos" => "controladores/ctrl_alumnos.php",
 							"actExtra" => "controladores/ctrl_actividadesExtra.php",
 							"sanciones" => "controladores/ctrl_sanciones.php",
 							"estancias" => "controladores/ctrl_estancias.php",
-							"comentarios" => "controladores/ctrl_comentarios.php");
+							"comentarios" => "controladores/ctrl_comentarios.php",
+							"materias" => "controladores/ctrl_materias.php");
 
 $bdConfig = array( "servername" => "localhost",
 					"username" => "root",
