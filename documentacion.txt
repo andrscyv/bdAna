@@ -52,7 +52,7 @@ Sanciones
 dominio = sanciones 
 
 func = insertaSancion; params = "cuAlum","descripcion",
-								 "area", "problemasReglamento";
+								"area", "problemasReglamento";
 func = sanciones // regresa todas las sanciones
 
 ===============================================================
