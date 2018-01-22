@@ -10,6 +10,10 @@ class bd
 		try {
     $this->conn = new PDO("mysql:host=".$config["servername"].";dbname=".$config["dbName"],
     						 $config["username"], $config["password"]);
+    //set charset
+    $this->conn->exec("set names utf8");
+
+
     // set the PDO error mode to exception
     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Connected successfully"; 

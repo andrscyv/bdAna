@@ -4,6 +4,7 @@ require 'bd.php';
 require 'util.php';
 //equire 'auth.php';
 //require 'controladores/ctrl_alumnos.php';
+ini_set('default_charset', 'utf-8');
 $msql = new bd($bdConfig);
 
 limpiaParams(); // Sólo limpia $_GET o $_POST

@@ -7,9 +7,9 @@ $funcionesRegistradas = array(
 					"authPublico" => array("auth","tengoSesion"),
 					"actExtra" => array("insertaActividad", "actividadesExtra"),
 					"sanciones" => array("insertaSancion", "sanciones"),
-					"estancias" => array("insertaUniversidad", "universidades"),
+					"estancias" => array("insertaUniversidad", "universidades","registraEstanciaAlumno"),
 					"comentarios" => array("insertaComentCu","comentarios", "comentarios_cu"),
-					"materias" => array("insertaMateria", "materias")
+					"materias" => array("insertaMateria", "materias", "registraMatAlum")
 				);
 
 $rutasRegistradas = array("alumnos" => "controladores/ctrl_alumnos.php",

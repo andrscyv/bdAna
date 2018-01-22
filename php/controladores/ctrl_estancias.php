@@ -46,6 +46,59 @@ function universidades(){
 }
 
 
+//solo se puede registrar una estancia para un alumno y una 
+//misma universidad
+//
+//func = registraEstanciaAlumno; params = cuAlum, idEst, anio(int), semestre(varchar)
+function registraEstanciaAlumno(){
+	global $msql;
+	$conn = $msql->conn;
+	$params = array("cuAlum","idEst", "anio", "semestre");
+	try{
+		if( issetArrPost( $params ) ){
+
+			$stmt = $msql->sqlPrepPost("SELECT idAlum FROM alumnos WHERE cu =:cuAlum",
+									array("cuAlum"));
+			$stmt->execute();
+
+			if($stmt->rowCount() > 0){
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+				$_POST["idAlum"] = $row["idAlum"];
+
+				$stmt = $msql->sqlPrepPost("SELECT * FROM alumnos_estancias 
+									WHERE idAlum =:idAlum AND idEst = :idEst",
+									array("idAlum", "idEst"));
+				$stmt->execute();
+				if($stmt->rowCount() == 0){
+
+					$params = array("idAlum", "idEst", "anio", "semestre");
+					$stmt = $msql->sqlPrepPost("INSERT INTO alumnos_estancias(idAlum, idEst, 
+							anio, semestre)
+							VALUES (:idAlum, :idEst, :anio, :semestre)", $params);
+
+					$stmt->execute();
+					$res = jsonOK("Insercion exitosa");
+				}
+				else
+					$res = jsonErr("Relacion alumno estancia ya existente");
+
+			}
+			else
+				$res = jsonErr("Alumno o universidad no existente");
+
+		}
+		else 
+			$res = jsonErr("Error en parametros");
+	}
+	catch(PDOException $e){
+		//$res = jsonErr($e->getMessage());
+		$res = jsonErr($e);
+	}
+
+	echo $res;
+}
+
+
 
 
  ?>

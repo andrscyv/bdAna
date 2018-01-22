@@ -62,7 +62,8 @@ Estancias
 dominio = estancias
 
 func  = insertaUniversidad ; params = nomUni, nomPais;
-func = universidades; // regresa todas las universidades
+func = universidades; // regresa todas las universidades;
+func = registraEstanciaAlumno; params = cuAlum, idEst (id de la universidad), anio(int), semestre(varchar);
 
 ===============================================================
 Comentarios
@@ -87,3 +88,7 @@ dominio = materias;
 func = insertaMateria; params = cMateria, folio, numCreditos, nombre, semestre (int)
 
 func = materias; //regresa todas las materias;
+
+func = registraMatAlum; params = cuAlum, cMateria, estatusFin, calificacion; // registra el alumno
+con la materia determinadas por los parametros;
+
