@@ -136,3 +136,29 @@ CREATE TABLE comentarios(
 	FOREIGN KEY(idAlum) REFERENCES alumnos(idAlum) ON DELETE CASCADE
 
 );
+
+ALTER TABLE alumnos MODIFY beca INT;
+ALTER TABLE alumnos MODIFY nombre VARCHAR(20);
+ALTER TABLE alumnos MODIFY apellidoP VARCHAR(20);
+ALTER TABLE alumnos MODIFY apellidoM VARCHAR(20);
+ALTER TABLE alumnos MODIFY programa VARCHAR(60);
+ALTER TABLE alumnos MODIFY email VARCHAR(50);
+ALTER TABLE alumnos MODIFY telefono VARCHAR(15);
+ALTER TABLE alumnos MODIFY estado VARCHAR(30);
+ALTER TABLE alumnos MODIFY calle VARCHAR(50);
+ALTER TABLE alumnos MODIFY colonia VARCHAR(50);
+ALTER TABLE alumnos MODIFY delegacion VARCHAR(50);
+ALTER TABLE alumnos MODIFY cp INT;
+
+CREATE TABLE preparatorias(
+	idPrep INT NOT NULL AUTO_INCREMENT,
+	nombrePrep VARCHAR(30) NOT NULL,
+	promedio DOUBLE NOT NULL,
+	habloConAna INT NOT NULL,
+	idAlum INT NOT NULL,
+	PRIMARY KEY (idPrep, idAlum),
+	FOREIGN KEY(idAlum) REFERENCES alumnos(idAlum) ON DELETE CASCADE
+
+);
+
+ALTER TABLE alumnos_estancias drop primary key, add primary key(idAlum, idEst, anio, semestre);
