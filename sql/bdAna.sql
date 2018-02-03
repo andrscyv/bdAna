@@ -162,3 +162,20 @@ CREATE TABLE preparatorias(
 );
 
 ALTER TABLE alumnos_estancias drop primary key, add primary key(idAlum, idEst, anio, semestre);
+
+
+--FALTA TERMINAR ESTA TABLA	
+CREATE TABLE materiasRevalidadas(
+	materiaRev VARCHAR(40) NOT NULL,
+	materiaItam VARCHAR(40),
+	calificacion DOUBLE,
+	idAlum INT NOT NULL,
+	idEst INT NOT NULL,
+	anio INT NOT NULL,
+	semestre VARCHAR(20) NOT NULL,
+	PRIMARY KEY(materiaRev, idAlum, idEst, anio, semestre),
+	FOREIGN KEY(idAlum) REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
+	FOREIGN KEY(idEst) REFERENCES alumnos_estancias(idEst) ON DELETE CASCADE,
+	FOREIGN KEY() REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
+	FOREIGN KEY(idAlum) REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
+);
