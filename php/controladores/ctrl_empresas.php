@@ -101,6 +101,46 @@ function registraAlumEmpresa_cu(){
 	echo $res;
 }
 
+//func = empresaDeAlum_cu; params = cuAlum;
+function empresaDeAlum_cu(){
+	global $msql;
+	$conn = $msql->conn;
+	$params = array("cuAlum");
+	try{
+		if( issetArrPost( $params ) ){
+
+			$stmt = $msql->sqlPrepPost("SELECT * from alumnos  where cu = :cuAlum", 
+									array("cuAlum"));
+			$stmt->execute();
+
+			if($stmt->rowCount() > 0){
+				$alum = $stmt->fetch(PDO::FETCH_ASSOC);
+				$_POST["idAlum"] = $alum["idAlum"];
+				$params = array("idAlum");
+				$stmt = $msql->sqlPrepPost("SELECT e.rfc, e.telefono, e.estado, e.nombre,
+				 		e.calle, e.colonia, e.delegacion, e.cp, e.numExt, e.numInt, e.giro
+				 		 from alumnos a, alumnos_empresas b, empresas e
+				 		 where a.idAlum = :idAlum and a.idAlum =b.idAlum and b.idEmp = e.idEmp", $params);
+
+				$stmt->execute();
+				$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				$res = json( $row );
+
+			}
+			else
+				$res = jsonErr("Alumno no existente");
+
+		}
+		else 
+			$res = jsonErr("Error en parametros");
+	}
+	catch(PDOException $e){
+		//$res = jsonErr($e->getMessage());
+		$res = $e;
+	}
+
+	echo $res;
+}
 
 
 

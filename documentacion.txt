@@ -131,3 +131,22 @@ func = insertaEmpresa; params = rfc, telefono, estado, nombre, calle, colonia,
 
 func = registraAlumEmpresa_cu; params = cuAlum, rfc, puesto, fechaIni; //Enlaca alumno dado con empresa 
 de rfc dado;
+
+func = empresaDeAlum_cu; params = cuAlum; //La empresa donde trabaja el alumno especificado
+
+===============================================================
+Escuelas alternas
+===============================================================
+
+dominio = escuelasAlt;
+
+func = insertaEscuelaAlt; param = nombre; // Inserta escuela alterna
+
+func = escuelasAlt; //regresas todas las escuelas alternas
+
+func = registraAlumEscAlt; params = cuAlum, idEsc, carrera; //Registra al alumno de cu en la escuela
+con la carrera especificada;
+
+func = escuelaDeAlum_cu; params = cuAlum; //Regresa la escuela alterna del alumno especificado
+
+
