@@ -22,3 +22,8 @@ VALUES ('usu','psw','admin');
 
 INSERT INTO usuarios(usuario, password, rol)
 VALUES ('admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','admin');
+
+INSERT INTO empresas(rfc, telefono, estado, nombre,
+				 		calle, colonia, delegacion, cp, numExt, numInt, giro)
+						VALUES (1, 1, "EdoMEx", "Bimbo",
+				 		"calle", ":colonia", ":delegacion", 1, 1, 1, "Hacen panes");

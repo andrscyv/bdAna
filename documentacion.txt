@@ -118,3 +118,16 @@ func = insertaPrepAlum_cu; params = cuAlum, nombrePrep,promedio, habloConAna(int
 func = preparatorias; // regresa todas las tuplas en preparatorias
 
 func = preparatoria_cu ; params = cuAlum; //tupla asociada al alumno de la cu
+
+===============================================================
+Empresas
+===============================================================
+dominio = empresas;
+
+func = empresas; //regresa todas las empresas
+
+func = insertaEmpresa; params = rfc, telefono, estado, nombre, calle, colonia,
+	delegacion, cp(int), numExt (int), numInt(int), giro;
+
+func = registraAlumEmpresa_cu; params = cuAlum, rfc, puesto, fechaIni; //Enlaca alumno dado con empresa 
+de rfc dado;
