@@ -67,8 +67,18 @@ Estancias
 dominio = estancias
 
 func  = insertaUniversidad ; params = nomUni, nomPais;
+
 func = universidades; // regresa todas las universidades;
+
+func = estancias; //todas los intercambios registrados
+
 func = registraEstanciaAlumno; params = cuAlum, idEst (id de la universidad), anio(int), semestre(varchar);
+
+func = registraMateriaRev_cu; params = cuAlum, universidad, anio(int), semestre(string), materiaRev (es el
+nombre de la materia en la universidad extranjera), materiaItam (nombre de la materia en el itam), calificacion;
+
+func = materiasDeAlum_cu; params = cuAlum; //Regresa materias revalidadas en todos los intercambios
+del alumno;
 
 ===============================================================
 Comentarios

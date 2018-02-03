@@ -7,7 +7,8 @@ $funcionesRegistradas = array(
 					"authPublico" => array("auth","tengoSesion"),
 					"actExtra" => array("insertaActividad", "actividadesExtra"),
 					"sanciones" => array("insertaSancion", "sanciones"),
-					"estancias" => array("insertaUniversidad", "universidades","registraEstanciaAlumno"),
+					"estancias" => array("insertaUniversidad", "universidades","registraEstanciaAlumno",
+						"estancias", "registraMateriaRev_cu", "materiasDeAlum_cu"),
 					"comentarios" => array("insertaComentCu","comentarios", "comentarios_cu"),
 					"materias" => array("insertaMateria", "materias", "registraMatAlum"),
 					"preparatorias" => array("insertaPrepAlum_cu", "preparatorias", "preparatoria_cu")
