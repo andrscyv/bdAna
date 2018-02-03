@@ -98,11 +98,12 @@ CREATE TABLE alumnos_empresas(
 
 
 CREATE TABLE alumnos_estancias(
+	idInter INT NOT NULL AUTO_INCREMENT,
 	idAlum INT NOT NULL,
 	idEst INT NOT NULL,
 	anio INT NOT NULL,
 	semestre VARCHAR(20),
-	PRIMARY KEY(idAlum, idEst),
+	PRIMARY KEY(idInter),
 	FOREIGN KEY(idAlum) REFERENCES alumnos(idAlum) ON DELETE CASCADE,
 	FOREIGN KEY(idEst) REFERENCES estancias(idEst) ON DELETE CASCADE
 	);
@@ -161,21 +162,13 @@ CREATE TABLE preparatorias(
 
 );
 
-ALTER TABLE alumnos_estancias drop primary key, add primary key(idAlum, idEst, anio, semestre);
 
-
---FALTA TERMINAR ESTA TABLA	
+	
 CREATE TABLE materiasRevalidadas(
 	materiaRev VARCHAR(40) NOT NULL,
 	materiaItam VARCHAR(40),
 	calificacion DOUBLE,
-	idAlum INT NOT NULL,
-	idEst INT NOT NULL,
-	anio INT NOT NULL,
-	semestre VARCHAR(20) NOT NULL,
-	PRIMARY KEY(materiaRev, idAlum, idEst, anio, semestre),
-	FOREIGN KEY(idAlum) REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
-	FOREIGN KEY(idEst) REFERENCES alumnos_estancias(idEst) ON DELETE CASCADE,
-	FOREIGN KEY() REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
-	FOREIGN KEY(idAlum) REFERENCES alumnos_estancias(idAlum) ON DELETE CASCADE,
+	idInter INT NOT NULL,
+	PRIMARY KEY(materiaRev, idInter),
+	FOREIGN KEY (idInter) REFERENCES alumnos_estancias(idInter) ON DELETE CASCADE	
 );
